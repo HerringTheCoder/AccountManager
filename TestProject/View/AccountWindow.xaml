@@ -1,0 +1,30 @@
+﻿<Window x:Class="TestProject.AccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestProject"
+        mc:Ignorable="d"
+        Title="AccountWindow" WindowStartupLocation="CenterScreen" Style="{StaticResource DefaultWindow}" Height="400">
+    <StackPanel>
+        <TextBlock Style="{StaticResource HeaderTextBlock }" Text="Account Manager"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Add" x:Name="AddButton" Grid.Column="0" Click="AddButton_Click"/>
+            <Button Content="Remove" x:Name="RemoveButton" Grid.Column="1" Click="RemoveButton_Click" />
+        </Grid>
+        <TextBlock Style="{StaticResource MyTextBlock}" Text="Choose an account to edit" Margin="20"></TextBlock>
+        <ComboBox x:Name="AccountComboBox"
+                  ItemsSource="{Binding AccountList}"
+                  DisplayMemberPath="ID"
+                  SelectedValue="{Binding CurrentAccount}"/>
+       
+        <TextBlock Style="{StaticResource MyTextBlock}" Text="Set up your account value" Margin="20"></TextBlock>
+        <Slider Value="{Binding CurrentAccount.Value}"></Slider>
+        <TextBlock Style="{StaticResource MyTextBlock}" Margin="20,0,0,0" Text="{Binding Path=CurrentAccount.Value, StringFormat='Current value: {0}'}"/>
+    </StackPanel>
+   
+</Window>
